@@ -1,6 +1,7 @@
 from tkinter import *
 import socket
 import threading
+from tkinter import ttk
 
 
 #TKINTER (DISENY DE L'APLICACIÓ) ----------------------------------------------------------------------------------------------
@@ -108,6 +109,7 @@ def destory_ventana_afegir_usuaris():
     ventana_afegir_usuaris.destroy()
 
 botones_usuaris_afegits = []
+botones_llista = []
 
 def boto_nou_usuari(name_user):
     name_user = name_user.strip()
@@ -219,8 +221,30 @@ def ventana_chat_principal(nom_usuari_lateral):
     contacts_label = Label(frame_lateral, text="Contactes:", font=("Calibri", 16, "bold"), bg="#84C4F4")
     contacts_label.place(x=85, y=170)
 
-    #conntacte_prova = Button(frame_lateral, text="Aimar", font=("Calibri", 13, "bold"), bg="#ffee04", width=25, command=nom_conversa_usuari, borderwidth=1, relief="solid")
-    #conntacte_prova.place(x=15, y=210)
+    frame_usuaris_afegits = Frame(frame_lateral, bg="#84C4F4", width=266, height=464, borderwidth=0)
+    frame_usuaris_afegits.place(x=0, y=200)
+
+    main_frame = Frame(frame_usuaris_afegits, bg="#84C4F4")
+    main_frame.pack(fill=BOTH, expand=1)
+
+    canvas = Canvas(main_frame, bg="#84C4F4", width=250, height=464, highlightthickness=0, relief="ridge")
+    canvas.pack(side=LEFT, fill=BOTH, expand=1)
+
+    scroll = ttk.Scrollbar(main_frame, orient=VERTICAL,command=canvas.yview)
+    scroll.pack(side=RIGHT, fill=Y)
+
+    canvas.configure(yscrollcommand=scroll.set)
+    canvas.bind("<Configure>", lambda e:canvas.configure(scrollregion=canvas.bbox("all")))
+
+    sframe = Frame(canvas, bg="#84C4F4")
+    canvas.create_window((0, 0), window=sframe, anchor="nw")
+
+    foto_usuari_perfil_lateral_2 = PhotoImage(file="contactes.png")
+    foto_usuari_perfil_lateral_2 = foto_usuari_perfil_lateral_2.subsample(11)
+
+    for i in range(30):
+        Button(sframe, text="Alex", width=20, font=("Calibri", 13, "bold"), borderwidth=1, relief="solid").grid(row=i, column=1, pady=15, padx=(5, 0))
+        Label(sframe, image=foto_usuari_perfil_lateral_2, borderwidth=0, bg="#84C4F4").grid(row=i, column=0, pady=15)
 
     # Frame Conversa -------------------------------------------------------------------------------------------
 
