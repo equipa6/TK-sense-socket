@@ -107,6 +107,14 @@ def destory_ventana_afegir_usuaris():
     validator_ventana_afegir_usuaris = 0
     ventana_afegir_usuaris.destroy()
 
+botones_usuaris_afegits = []
+
+def boto_nou_usuari(name_user):
+    name_user = name_user.strip()
+    if name_user != "":
+        lletres_vermelles = Label(ventana_afegir_usuaris, text="Contacte afegit!", font=("THIN", 12, "bold"), fg="black", bg="#8cb3ff")
+        lletres_vermelles.place(x=80, y=180)
+
 def finestra_afegir_usuaris():
     global ventana_afegir_usuaris
     global validator_ventana_afegir_usuaris
@@ -124,7 +132,7 @@ def finestra_afegir_usuaris():
         introduir_nom_usuari.place(x=17, y= 100)
         nom_afegir_usuari = Entry(ventana_afegir_usuaris, font=("Calibri", 16), borderwidth=1, relief="solid", bg="#ffffff")
         nom_afegir_usuari.place(x=35, y=150)
-        boto_afegir_usuaris = Button(ventana_afegir_usuaris, text="Afegeix", fg="#ffee04",bg="#606fff", cursor="hand2",font=("Calibri", 13, "bold"),width=14, borderwidth=0, activebackground="#ffff98", activeforeground="#606fff")
+        boto_afegir_usuaris = Button(ventana_afegir_usuaris, text="Afegeix", fg="#ffee04",bg="#606fff", cursor="hand2",font=("Calibri", 13, "bold"),width=14, borderwidth=0, activebackground="#ffff98", activeforeground="#606fff", command=lambda:boto_nou_usuari(nom_afegir_usuari.get()))
         boto_afegir_usuaris.place(x=78,y=210 )
         imatge_usuari = PhotoImage(file="contactes.png")
         tamany_imatge = imatge_usuari.subsample(2)
@@ -153,10 +161,10 @@ def validacio_conta_registre_sessio(name_registre, password_registre, validator)
                 pass
             ventana_chat_principal(name_registre.capitalize())
 
-def nom_conversa_usuari():
-    global name_user
-    name_user = "Aimar"
-    nom_usuari.config(text=name_user)
+#def nom_conversa_usuari():
+    #global name_user
+    #name_user = "Aimar"
+    #nom_usuari.config(text=name_user)
 
 def ventana_chat_principal(nom_usuari_lateral):
     global nom_usuari
@@ -211,8 +219,8 @@ def ventana_chat_principal(nom_usuari_lateral):
     contacts_label = Label(frame_lateral, text="Contactes:", font=("Calibri", 16, "bold"), bg="#84C4F4")
     contacts_label.place(x=85, y=170)
 
-    conntacte_prova = Button(frame_lateral, text="Aimar", font=("Calibri", 13, "bold"), bg="#ffee04", width=25, command=nom_conversa_usuari, borderwidth=1, relief="solid")
-    conntacte_prova.place(x=15, y=210)
+    #conntacte_prova = Button(frame_lateral, text="Aimar", font=("Calibri", 13, "bold"), bg="#ffee04", width=25, command=nom_conversa_usuari, borderwidth=1, relief="solid")
+    #conntacte_prova.place(x=15, y=210)
 
     # Frame Conversa -------------------------------------------------------------------------------------------
 
