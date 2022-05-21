@@ -248,8 +248,6 @@ def ventana_chat_principal(nom_usuari_lateral):
 
     for i in range(100):
         Button(sframe, text="", width=20, font=("Calibri", 13, "bold"), borderwidth=0, bg="#84C4F4").grid(row=i, column=1, pady=15, padx=(5, 0))
-        Label(sframe, image=foto_usuari_perfil_lateral_2, borderwidth=0, bg="#84C4F4").grid(row=i, column=0, pady=15)
-
     # Frame Conversa -------------------------------------------------------------------------------------------
 
     frame_conversa = Frame(chat_ventana, bg="#ffffff", width=863, height=668, borderwidth=2, relief="solid")
