@@ -108,14 +108,21 @@ def destory_ventana_afegir_usuaris():
     validator_ventana_afegir_usuaris = 0
     ventana_afegir_usuaris.destroy()
 
-botones_usuaris_afegits = []
-botones_llista = []
+def nom_conversa_usuari(nombre):
+    name_user = nombre
+    nom_usuari.config(text=name_user)
 
-def boto_nou_usuari(name_user):
-    name_user = name_user.strip()
-    if name_user != "":
+filas_contactos = 0
+
+def boto_nou_usuari(nom_del_usuari):
+    global filas_contactos
+    nom_del_usuari = nom_del_usuari.strip()
+    if nom_del_usuari != "":
         lletres_vermelles = Label(ventana_afegir_usuaris, text="Contacte afegit!", font=("THIN", 12, "bold"), fg="black", bg="#8cb3ff")
         lletres_vermelles.place(x=80, y=180)
+        Button(sframe, text=nom_del_usuari, width=20, font=("Calibri", 13, "bold"), borderwidth=1, relief="solid", command=lambda nom_del_usuari=nom_del_usuari:nom_conversa_usuari(nom_del_usuari)).grid(row=filas_contactos, column=1, pady=15, padx=(5, 0))
+        Label(sframe, image=foto_usuari_perfil_lateral_2, borderwidth=0, bg="#84C4F4").grid(row=filas_contactos, column=0, pady=15)
+        filas_contactos += 1
 
 def finestra_afegir_usuaris():
     global ventana_afegir_usuaris
@@ -163,17 +170,14 @@ def validacio_conta_registre_sessio(name_registre, password_registre, validator)
                 pass
             ventana_chat_principal(name_registre.capitalize())
 
-#def nom_conversa_usuari():
-    #global name_user
-    #name_user = "Aimar"
-    #nom_usuari.config(text=name_user)
-
 def ventana_chat_principal(nom_usuari_lateral):
     global nom_usuari
     global widget_text_conversa
     global chat_ventana
     global name_user
     global inp_chat
+    global sframe
+    global foto_usuari_perfil_lateral_2
 
     name_user = "Usuari"
     chat_ventana = Tk()
@@ -242,8 +246,8 @@ def ventana_chat_principal(nom_usuari_lateral):
     foto_usuari_perfil_lateral_2 = PhotoImage(file="contactes.png")
     foto_usuari_perfil_lateral_2 = foto_usuari_perfil_lateral_2.subsample(11)
 
-    for i in range(30):
-        Button(sframe, text="Alex", width=20, font=("Calibri", 13, "bold"), borderwidth=1, relief="solid").grid(row=i, column=1, pady=15, padx=(5, 0))
+    for i in range(100):
+        Button(sframe, text="", width=20, font=("Calibri", 13, "bold"), borderwidth=0, bg="#84C4F4").grid(row=i, column=1, pady=15, padx=(5, 0))
         Label(sframe, image=foto_usuari_perfil_lateral_2, borderwidth=0, bg="#84C4F4").grid(row=i, column=0, pady=15)
 
     # Frame Conversa -------------------------------------------------------------------------------------------
