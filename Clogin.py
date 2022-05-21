@@ -241,9 +241,10 @@ def ventana_chat_principal(nom_usuari_lateral):
 
     foto_usuari_perfil_lateral_2 = PhotoImage(file="contactes.png")
     foto_usuari_perfil_lateral_2 = foto_usuari_perfil_lateral_2.subsample(11)
+    #Button(sframe, text="", width=20, font=("Calibri", 13, "bold"), borderwidth=0, bg="#84C4F4").grid(row=i, column=1, pady=15, padx=(5, 0))
 
     for i in range(100):
-        Button(sframe, text="", width=20, font=("Calibri", 13, "bold"), borderwidth=0, bg="#84C4F4").grid(row=i, column=1, pady=15, padx=(5, 0))
+        Label(sframe, text="", font=("Calibri", 13, "bold"), borderwidth=0, bg="#84C4F4").grid(row=i, column=1, pady=15, padx=(5, 0))
     
     # Frame Conversa -------------------------------------------------------------------------------------------
 
