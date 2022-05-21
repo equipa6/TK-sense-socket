@@ -3,9 +3,6 @@ import socket
 import threading
 from tkinter import ttk
 
-
-#TKINTER (DISENY DE L'APLICACIÓ) ----------------------------------------------------------------------------------------------
-
 validator_ventana_ajustes_generales = 0
 def destory_ventana_ajustes_generales():
     global validator_ventana_ajustes_generales
@@ -113,14 +110,13 @@ def nom_conversa_usuari(nombre):
     nom_usuari.config(text=name_user)
 
 filas_contactos = 0
-
 def boto_nou_usuari(nom_del_usuari):
     global filas_contactos
     nom_del_usuari = nom_del_usuari.strip()
     if nom_del_usuari != "":
         lletres_vermelles = Label(ventana_afegir_usuaris, text="Contacte afegit!", font=("THIN", 12, "bold"), fg="black", bg="#8cb3ff")
         lletres_vermelles.place(x=80, y=180)
-        Button(sframe, text=nom_del_usuari, width=20, font=("Calibri", 13, "bold"), borderwidth=1, relief="solid", command=lambda nom_del_usuari=nom_del_usuari:nom_conversa_usuari(nom_del_usuari)).grid(row=filas_contactos, column=1, pady=15, padx=(5, 0))
+        Button(sframe, text=nom_del_usuari, width=20, font=("Calibri", 13, "bold"), borderwidth=1, relief="solid", bg="#606fff", cursor="hand2",fg="#ffee04", command=lambda nom_del_usuari=nom_del_usuari:nom_conversa_usuari(nom_del_usuari)).grid(row=filas_contactos, column=1, pady=15, padx=(5, 0))
         Label(sframe, image=foto_usuari_perfil_lateral_2, borderwidth=0, bg="#84C4F4").grid(row=filas_contactos, column=0, pady=15)
         filas_contactos += 1
 
@@ -248,6 +244,7 @@ def ventana_chat_principal(nom_usuari_lateral):
 
     for i in range(100):
         Button(sframe, text="", width=20, font=("Calibri", 13, "bold"), borderwidth=0, bg="#84C4F4").grid(row=i, column=1, pady=15, padx=(5, 0))
+    
     # Frame Conversa -------------------------------------------------------------------------------------------
 
     frame_conversa = Frame(chat_ventana, bg="#ffffff", width=863, height=668, borderwidth=2, relief="solid")
